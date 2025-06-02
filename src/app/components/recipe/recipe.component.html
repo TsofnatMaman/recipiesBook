@@ -1,0 +1,51 @@
+<div class="recipe-container">
+  <img style="margin-bottom: 20px;" src="http://localhost:3001/{{r.img}}" alt="{{ r.name }}" class="recipe-image" />
+  <mat-icon style="cursor: pointer;" (click)="toggleFavorite(r._id!)" [style.color]="color">favorite</mat-icon>
+  <h1 class="recipe-title">{{ r.name }}</h1><mat-icon style="color: rgb(34, 30, 89); cursor: pointer;"
+    (click)="edit()">edit</mat-icon>
+  <div style="margin-top: 20px;">
+
+  </div>
+  <nav>
+    <ul class="recipe-details">
+      <li class="recipe-info">
+        <mat-icon>timer</mat-icon>
+        <span>Time: {{ r.time }}</span>
+      </li>
+      <li class="recipe-info">
+        <mat-icon>star</mat-icon>
+        <span>Difficulty Level: {{ r.difficultLevel }}</span>
+      </li>
+      <li class="recipe-info">
+        <mat-icon>view_list</mat-icon><span>categories: </span>
+        @for(c of categs;track $index){
+        <mat-icon>{{c.icon}}</mat-icon>
+        <span>{{ c.name }}</span>
+        }
+      </li>
+    </ul>
+  </nav>
+
+  <h3 class="ingredients-title">Ingredients</h3>
+  <ul class="ingredients-list">
+    @for (i of r.ingrediets; track $index) {
+    <li class="ingredient-item">{{i}}</li>
+    }
+  </ul>
+
+  <div>
+    <h3>discription</h3>
+    @for(d of dis; track $index){
+    @if(isDigit(d)){
+    <app-timer [time]="d"></app-timer>
+    }
+    @else{
+    <span>{{d}}</span>
+    }
+    }
+  </div>
+
+
+  <br><br>
+  <p style="font-size: 12px;">uploading by: {{by}}</p>
+</div>

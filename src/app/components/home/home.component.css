@@ -1,0 +1,36 @@
+.content-wrapper {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+    padding-top: 100px;
+    /* הוסף רווח למעלה כדי למנוע חפיפות עם ה-navbar */
+}
+
+app-nav {
+    position: fixed;
+    z-index: 1000;
+    /* להבטיח שה-navbar יהיה מעל שאר האלמנטים */
+    top: 0;
+
+}
+
+/* עיצוב ה-aside */
+.side {
+    margin-right: 120px;
+    width: 15%;
+    /* קבע רוחב קבוע ל-aside */
+}
+
+app-aside{
+    position: fixed;
+    right: 5px;
+    top: 120px;
+}
+
+/* עיצוב ה-router-outlet */
+router-outlet {
+    left: 0;
+    /* יאפשר ל-router-outlet לתפוס את כל שאר הרוחב */
+}

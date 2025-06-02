@@ -1,0 +1,13 @@
+<div class="recipes-list">
+  @for (r of arr; track $index) {
+  <div class="recipe-card">
+    <img src="http://localhost:3001/{{r.img}}" alt="{{r.name}}" class="recipe-thumbnail" />
+    <h2 class="recipe-name">{{ r.name }}</h2>
+    <div style="display: inline;">
+      <button class="details-btn" (click)='showMore(r._id!)'>More Details</button>
+      <mat-icon style="padding-left: 50px; cursor: pointer;"
+        [style.color]="colorMap[r._id!]" (click)="toggleFavorite(r._id!)">favorite</mat-icon>
+    </div>
+  </div>
+  }
+</div>

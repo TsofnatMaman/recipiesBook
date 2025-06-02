@@ -1,0 +1,8 @@
+<!-- timer.component.html -->
+<div class="timer-box">
+  <p [innerHTML]="time"></p>
+  <div style="display: inline; display: flex;">
+    <button (click)="startTimer()" [disabled]="isRunning">start</button>
+    <button (click)="resetTimer()">reset</button>
+  </div>
+</div>

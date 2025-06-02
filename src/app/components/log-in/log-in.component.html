@@ -1,0 +1,29 @@
+<div class="login-container">
+  <h2>Log in</h2>
+  <form (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>User Name</mat-label>
+      <input matInput [(ngModel)]="username" name="username" required />
+      @if (!username) {
+        <mat-error>Enter your user name</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="password" name="password" required />
+      @if (!password) {
+        <mat-error>Enter password</mat-error>
+      }
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!username || !password"
+    >
+      Log in
+    </button>
+  </form>
+</div>

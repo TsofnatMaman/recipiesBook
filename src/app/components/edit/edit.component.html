@@ -1,0 +1,88 @@
+<form class="login-container" (ngSubmit)="save()">
+  <h2>edit recipe</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>recipe name</mat-label>
+    <input [readonly]="!canEdit()" matInput [(ngModel)]="r.name" name="recipe name" required />
+    @if (!r.name) {
+    <mat-error>Enter name</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>difficult level</mat-label>
+    <input [readonly]="!canEdit()" matInput [(ngModel)]="r.difficultLevel" name="difficult level" required type="number"
+      max="3" min="1" />
+    @if (!r.difficultLevel) {
+    <mat-error>Enter difficult level</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>time</mat-label>
+    <input [readonly]="!canEdit()" matInput [(ngModel)]="r.time" name="time" required type="number" min="0" />
+    @if (r.time) {
+    <mat-error>Enter time</mat-error>
+    }
+  </mat-form-field>
+
+  <div>
+    <mat-label>ingredients</mat-label><br />
+    @for(i of r.ingrediets;track $index){
+    <input [readonly]="!canEdit()" [(ngModel)]="r.ingrediets[$index]" name="r.ingrediets[{{$index}}]" required />
+    }
+    <br />
+    <input type="button" value="+" (click)="addIngredient()" />
+  </div>
+
+  <mat-form-field appearance="outline" style="margin-top: 50px; position: relative;">
+    <mat-label>description</mat-label>
+    <textarea matInput [(ngModel)]="r.discription" name="dis" required></textarea>
+
+    <!-- כפתור הטיימר -->
+    <div class="floating-timer-button" (click)="toggleTimerInput()" #timerBtn>
+      <mat-icon style="color: blueviolet;">timer</mat-icon>
+    </div>
+  </mat-form-field>
+
+  <!-- תיבת הטיימר מרחפת – מחוץ ל-mat-form-field -->
+  @if(showTimerInput){
+  <div class="floating-timer-popup" [style.top.px]="popupTop" [style.left.px]="popupLeft">
+    <h5 style="display: inline; margin-right: 10px;">
+      add timer of
+      <input [(ngModel)]="t" name="time" type="number" (click)="selectText($event)" style="width: 50px;" /> seconds
+    </h5>
+    <button type="button" (click)="addTimer()" style="background-color: blueviolet; width: 50px; height: 30px; font-size: 9px;color: white;">Add</button>
+  </div>
+  }
+  <mat-form-field appearance="outline" class="category-form-field">
+    <mat-label>Category</mat-label>
+    <mat-select [(ngModel)]="r.categories" name="r.categories" multiple>
+      @for(c of categories; track $index){
+      <mat-option [value]="c._id" style="background-color: rgb(211, 194, 226); border: 1px solid gray;">
+        <mat-icon>{{c.icon}}</mat-icon>{{ c.name }}
+      </mat-option>
+      }
+    </mat-select>
+    @if(!r.categories.length){
+    <mat-error style="color: blueviolet;">Select a category</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Upload Image</mat-label>
+    <input [readonly]="!canEdit()" matInput type="text" [value]="r.img" readonly (click)="fileInput.click()" />
+    <input #fileInput type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;" required />
+    @if(!r.img){
+    <mat-error>Select an image</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- תצוגת התמונה הנבחרת -->
+  @if(r.img){
+  <img [src]="'http://localhost:3001/'+r.img" alt="Recipe Image" class="preview-image" />
+  }
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!r.name || !r.time || !r.difficultLevel">
+    update
+  </button>
+</form>

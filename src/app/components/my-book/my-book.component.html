@@ -1,0 +1,15 @@
+<div class="back">
+    <h1>my recipes book</h1>
+    <div class="recipes-list">
+        @for (r of book; track $index) {
+        <div class="recipe-card">
+            <img src="http://localhost:3001/{{r.img}}" alt="{{r.name}}" class="recipe-thumbnail" />
+            <h2 class="recipe-name">{{ r.name }}</h2>
+            <div style="display: inline;">
+                <button class="details-btn" (click)='showMore(r._id!)'>More Details</button>
+                <mat-icon style="cursor: pointer;" (click)="del(r._id!)" style="margin-left: 50px;">delete</mat-icon>
+            </div>
+        </div>
+        }
+    </div>
+</div>

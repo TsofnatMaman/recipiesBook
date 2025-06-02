@@ -1,0 +1,32 @@
+<aside class="side">
+  <h1 style="display: inline; margin-left: 90px;">Search</h1><mat-icon style="margin-left: 70px; cursor: pointer;" (click)="refresh()">refresh</mat-icon><br>
+
+  <mat-form-field style="margin-top: 15px;" appearance="outline" class="input-field">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name" name="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Difficult Level</mat-label>
+    <input matInput [(ngModel)]="dif" name="dif" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Time</mat-label>
+    <input matInput [(ngModel)]="time" name="time" />
+  </mat-form-field>
+
+  <!-- הוספת אפשרות לבחור קטגוריות מרובות עם Checkboxes -->
+  <div>
+    <h4>Categories</h4>
+    <div class="checkbox-group">
+      @for(c of categories;track $index){
+      <input type="checkbox" [(ngModel)]="selectedCategories[c._id]" [name]="c.name" />{{ c.name }}
+      <br>
+      }
+    </div>
+  </div>
+
+  <br />
+  <button (click)="save()" class="search-btn">Search</button>
+</aside>

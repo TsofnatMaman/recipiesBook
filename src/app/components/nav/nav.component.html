@@ -1,0 +1,27 @@
+<div class="head">
+  <div class="back-button" (click)="goBack()">
+    <mat-icon>arrow_forward</mat-icon> Back
+  </div>
+  <nav class="navbar">
+    <ul>
+
+      <li>
+        <a routerLink="myBook" class="badge-container">
+          @if(us.favoriteCount){
+          <span class="custom-badge">{{ [us.favoriteCount] }}</span>
+          }
+          <mat-icon>menu_book</mat-icon>
+        </a>
+      </li>
+
+      <li><a routerLink="all">All Recipes</a></li>
+      <li><a routerLink="signup">Sign Up</a></li>
+      <li><a routerLink="login">Log In</a></li>
+      <li><a routerLink="add">Add Recipe</a></li>
+      <li class="username">
+        {{ getCur() }}
+        <mat-icon (click)="logout()" class="logout-icon">logout</mat-icon>
+      </li>
+    </ul>
+  </nav>
+</div>

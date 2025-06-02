@@ -1,0 +1,94 @@
+.login-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 20px;
+  margin-right: -300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-error {
+  color: red;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1976d2;
+}
+
+/* עיצוב הכלל עבור form-field */
+.category-form-field {
+  width: 100%;
+  /* עושה את ה-form field לרוחב מלא */
+  margin-top: 10px;
+  /* מרווח מעל לכל אלמנט */
+}
+
+/* עיצוב עבור mat-select */
+.category-form-field mat-select {
+  padding-top: 5px;
+  /* מרווח מהחלק העליון של ה-select */
+  padding-bottom: 5px;
+  /* מרווח מהחלק התחתון */
+}
+
+/* עיצוב למט-אופשן */
+mat-option {
+  padding: 8px;
+  /* עיצוב אפשרויות בתפריט */
+  font-size: 14px;
+  /* גודל פונטים עבור האפשרויות */
+}
+.preview-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+mat-form-field {
+  position: relative;
+}
+
+mat-form-field {
+  position: relative;
+}
+
+/* כפתור הטיימר הקטן שמופיע ליד textarea */
+.floating-timer-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #eeeeee;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* תיבת הטיימר המרוחפת */
+.floating-timer-popup {
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 20;
+  border-radius: 6px;
+}
+
